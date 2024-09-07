@@ -1,7 +1,7 @@
 
 
 
-
+console.log("Application starting");
 try {
     fetch('https://www.reddit.com/r/latinas.json')
     .then(res => res.json() )
