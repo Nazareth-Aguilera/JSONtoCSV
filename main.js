@@ -15,7 +15,7 @@ try {
 
 function handle(inputData) {
 
-    const headers = Obect.keys(inputData.data[0]).toString();
+    const headers = Object.keys(inputData.data[0]).toString();
     console.log(headers);
 
     const main = inputData.data.map(item => {
