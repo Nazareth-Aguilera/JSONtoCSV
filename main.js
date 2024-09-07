@@ -12,7 +12,7 @@
     
         });
     } catch(error) {
-        console.log(error);
+        console.log("Test 1", error);
     }
     
     
