@@ -29,11 +29,14 @@ function handle(inputData) {
     const csv = [headers, ...main].join('\n');
     console.log(csv);
 
+    startCSVDownload(csv);
+
+
 
 }
 
 
-function startCSVDownload() {
+function startCSVDownload(input) {
 
     const blob = new Blob([input], { type: 'application/csv' } );
 
