@@ -5,10 +5,18 @@ console.log("Application starting");
 try {
     fetch('https://www.reddit.com/r/latinas.json')
     .then(res => res.json() )
-    .then(data => handle(data));
+    .then(data => {
+        console.log("getting data");
+        console.log(data);
+        handle(data)
+
+    });
 } catch(error) {
     console.log(error);
 }
+
+
+console.log("---------------------------------------------");
 
 
 
