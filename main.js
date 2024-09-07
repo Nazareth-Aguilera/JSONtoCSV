@@ -7,7 +7,7 @@
         .then(res => res.json() )
         .then(data => {
             console.log("getting data");
-            console.log(data);
+            console.log(data.data);
             handle(data)
     
         });
