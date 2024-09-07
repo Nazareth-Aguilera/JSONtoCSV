@@ -2,11 +2,15 @@
 
 
 
+try {
+    fetch('https://www.reddit.com/r/latinas.json')
+    .then(res => res.json() )
+    .then(data => handle(data));
+} catch(error) {
+    console.log(error);
+}
 
 
-fetch('https://regres.in/api/users')
-.then(res => res.json() )
-.then(data => handle(data));
 
 
 function handle(inputData) {
