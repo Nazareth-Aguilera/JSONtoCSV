@@ -6,7 +6,7 @@
         fetch('https://www.reddit.com/r/latinas.json')
         .then(res => res.json() )
         .then(data => {
-            console.log("changed input data");
+            console.log("test 7");
             console.log(data.data.children);
             handle(data.data.children)
     
@@ -26,9 +26,9 @@
         const headers = Object.keys(inputData[0].data).toString();
         console.log(headers);
     
-        const main = inputData.data.map(item => {
+        const main = inputData.map(item => {
     
-            return Object.values(item).toString();
+            return Object.values(item.data).toString();
     
         });
     
