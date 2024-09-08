@@ -6,9 +6,9 @@
         fetch('https://www.reddit.com/r/latinas.json')
         .then(res => res.json() )
         .then(data => {
-            console.log("getting data");
-            console.log(data.data);
-            handle(data)
+            console.log("getting data children");
+            console.log(data.data.children);
+            handle(data.data.children)
     
         });
     } catch(error) {
