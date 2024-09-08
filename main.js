@@ -3,7 +3,7 @@
 
     console.log("Application starting");
     try {
-        fetch('https://www.reddit.com/r/latinas.json')
+        fetch('https://www.reddit.com/r/worldnews.json')
         .then(res => res.json() )
         .then(data => {
             console.log("test 7");
