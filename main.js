@@ -1,22 +1,25 @@
 
 (function() {
 
-    console.log("Application starting");
-    try {
-        fetch('https://www.reddit.com/r/worldnews.json')
-        .then(res => res.json() )
-        .then(data => {
-            console.log("test 7");
-            console.log(data.data.children);
-            handle(data.data.children)
+    function main(apiUrl) {
+
+        console.log("Application starting");
+        try {
+            fetch(apiUrl)
+            .then(res => res.json() )
+            .then(data => {
+                console.log("test 7");
+                console.log("Data: ", data);
+                //console.log(data.data.children);
+                //handle(data.data.children)
     
-        });
-    } catch(error) {
-        console.log("Test 1", error);
+            });
+        } catch(error) {
+            console.log(error);
+        }
+
+
     }
-    
-    
-    console.log("---------------------------------------------");
     
     
     
@@ -52,6 +55,10 @@
     
     
         document.getElementById('btn').addEventListener('click', () => {
+
+            const apiUrl = document.getElementById("apiUrl").value;
+
+            main(apiUrl);
     
             const a = document.createElement('a');
             a.download = 'test-csv.csv';
