@@ -1,64 +1,90 @@
 class App {
 
     constructor() {
-        this.key = document.getElementById("key");
-        this.textbox = document.getElementById("textbox");
+
+        this.file = document.getElementById("myFile");
         this.btn = document.getElementById("btn");
-        this.url = document.getElementById("textbox").value || "";
+        this.data = null;
+
     }
 
     initEventListeners() {
-        this.btn.onclick = () => {
 
-            this.url = document.getElementById("textbox").value || "";
-            console.log("Value: ", this.url);
-            const authorizationHeader = this.createAuthorizationHeader();
-            this.key = document.getElementById('key');
-            this.fetchData(authorizationHeader);
+        this.file.addEventListener("change", (event) => {
+
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = (event) => {
+
+                const fileContent = event.target.result;
+                console.log(fileContent);
+                this.data = JSON.parse(fileContent);
+                console.log(this.data);
+
+
+            };
+
+            reader.readAsText(file);
+
+
+        });
+
+
+        this.btn.onclick = () => {
+            let csv = this.createCSVFile();
+            this.startCSVDownload(csv);
             
         };
 
-        this.key.onkeyup = () => {
-
-            this.key = document.getElementById("key");
-            console.log(this.key.value);
-        };
-    }
-
-
-    createAuthorizationHeader() {
-
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                'X-Authorization' : this.key.value
-            }
-        };
-
-        return options;
-
 
     }
 
-    fetchData(authorizationHeaders) {
 
-        try {
-            console.log("URL", this.url);
-            console.log("HEADERS", authorizationHeaders);
-            fetch(new Request(this.url, authorizationHeaders))
-            .then(res => res.json() )
-            .then(data => {
-                console.log("Data: ", data);
-                //console.log(data.data.children);
-                handle(data.data.children)
+    createCSVFile() {
 
-            });
-        } catch(error) {
-            console.log(error);
-        }
+        const headers = Object.keys(this.data.data[0]).toString();
+        console.log(headers);
+
+        const main = this.data.data.map(item => {
+
+            return Object.values(item).toString();
+
+        });
+
+        const csv = [headers, ...main].join('\n');
+        console.log(csv);
+
+        return csv;
 
     }
+
+    startCSVDownload(input) {
+
+        console.log("start downloading");
+
+        const blob = new Blob([input], { type: 'application/csv' } );
+    
+        const url= URL.createObjectURL(blob);
+    
+    
+    
+        const a = document.createElement('a');
+        const today = new Date();
+        const fullDateString = today.toDateString();
+        a.download = `${fullDateString}.csv`;
+        a.href = url;
+        a.style.display = 'none';
+        
+        document.body.appendChild(a);
+        
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+
+    }
+
+
 
 
     run() {

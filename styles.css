@@ -43,6 +43,7 @@
 
 .container main h1 {
 
+    font-size: 36px;
     margin-bottom: 20px;
 
 }
@@ -60,11 +61,24 @@
     margin-bottom: 10px;
 }
 
-.container main button {
+button, input[type="file"] {
 
-
+    padding: 10px 15px 10px 15px;
     margin-bottom: 20px;
+    background-color: rgb(34, 22, 171);
+    color: white;
+    text-shadow: 2px, 2px, 2px 2px black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border: 2px solid white;
 
+
+}
+
+button:hover, input[type="file"] {
+
+    border: 2px solid lightblue;
 
 }
 
