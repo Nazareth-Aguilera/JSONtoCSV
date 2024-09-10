@@ -1,0 +1,18 @@
+{
+    "data": [
+        {
+            "Employee": "Naz",
+            "ID": "001",
+            "Days Worked": "30",
+            "Days Punched In": ["09-09-2024"],
+            "Classification": "Classified"
+        },
+        {
+            "Employee": "Nazareth",
+            "ID": "002",
+            "Days Worked": "356",
+            "Days Punched In": ["09-09-2024", "09-19-2024", "09-29-2024", "09-59-2024"],
+            "Classification": "Certificated"
+        }        
+    ]
+}

@@ -44,7 +44,6 @@ class App {
     createCSVFile() {
 
         const headers = Object.keys(this.data.data[0]).toString();
-        console.log(headers);
 
         const main = this.data.data.map(item => {
 
@@ -52,8 +51,9 @@ class App {
 
         });
 
+        console.log(main);
+
         const csv = [headers, ...main].join('\n');
-        console.log(csv);
 
         return csv;
 
@@ -62,6 +62,7 @@ class App {
     startCSVDownload(input) {
 
         console.log("start downloading");
+        console.log(input);
 
         const blob = new Blob([input], { type: 'application/csv' } );
     
@@ -83,8 +84,6 @@ class App {
         URL.revokeObjectURL(url);
 
     }
-
-
 
 
     run() {
