@@ -1,5 +1,16 @@
 
+
+
+
+
 (function() {
+
+    const app = new App();
+    app.run();
+
+
+
+/*
 
     function main(apiUrl) {
 
@@ -8,10 +19,9 @@
             fetch(apiUrl)
             .then(res => res.json() )
             .then(data => {
-                console.log("test 7");
                 console.log("Data: ", data);
                 //console.log(data.data.children);
-                //handle(data.data.children)
+                handle(data.data.children)
     
             });
         } catch(error) {
@@ -55,10 +65,6 @@
     
     
         document.getElementById('btn').addEventListener('click', () => {
-
-            const apiUrl = document.getElementById("apiUrl").value;
-
-            main(apiUrl);
     
             const a = document.createElement('a');
             a.download = 'test-csv.csv';
@@ -76,6 +82,14 @@
     }
 
 
+
+
+    const apiUrl = document.getElementById("apiUrl").value;
+
+    main(apiUrl);
+
+
+    */
 
 })();
 
